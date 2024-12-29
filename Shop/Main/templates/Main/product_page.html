@@ -1,0 +1,10 @@
+{% extends 'Main/layout.html' %}
+
+{% block content %}
+    <div class="description">
+        <img src="{{ data_db.image.url }}" alt="{{ data_db.name }}">
+        <h2>{{ data_db.name }}</h2>
+        <p>{{ data_db.description }}</p>
+        <a href="{% url 'main' %}?item={{ data_db.slug }}">Купить</a>
+    </div>
+{% endblock %}

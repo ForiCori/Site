@@ -1,0 +1,13 @@
+{% extends 'Main/layout.html' %}
+
+{% block content %}
+    {% for i in data_db %}
+        <div class="card">
+            <img src="{{ i.image.url }}" alt="{{ i.name }}">
+            <h3>{{ i.name }}</h3>
+            <p>{{ i.description|truncatewords:12 }}</p>
+            <p>Цена: {{ i.price }} руб.</p>
+            <a href="{{ i.get_absolute_url }}">ссылка на товар</a>
+        </div>
+    {% endfor %}
+{% endblock %}

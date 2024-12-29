@@ -1,0 +1,9 @@
+{% extends 'Main/layout.html' %}
+
+{% block content %}
+    <div class="profile">
+        <h2>Информация о пользователе</h2>
+        <p>Имя пользователя: {{ data_db.username }}</p>
+        <p>Почта: {{ data_db.email }}</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'Main/css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <div id="header">
+        {% if user %}
+            <h3>{{ user }}</h3>
+        {% endif %}
+        <ul>
+            {% for m in menu %}
+                {% if m.path_name != 'profile' %}
+                    {% if m.path_name != 'cart' %}
+                        <li><a href="{% url m.path_name %}">{{ m.title }}</a></li>
+                    {% else %}
+                        {% if cart %}
+                            <li class="cart_li">
+                                <a href="{% url m.path_name %}">{{ m.title }}</a>
+                                <div class="circle"><p>{{ cart }}</p></div>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url m.path_name %}">{{ m.title }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url m.path_name user%}">{{ m.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <div id="footer">
+
+    </div>
+</body>
+</html>
